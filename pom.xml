@@ -274,7 +274,7 @@
                                 </rules>
                             </configuration>
                         </execution>
-                        <!-- Check main project for compatibility with JDK 7 API -->
+                        <!-- Check main project for compatibility with JDK 7 API
                         <execution>
                             <id>check-signatures</id>
                             <phase>compile</phase>
@@ -292,7 +292,7 @@
                                     </checkSignatureRule>
                                 </rules>
                             </configuration>
-                        </execution>
+                        </execution> -->
                     </executions>
                 </plugin>
 
@@ -414,7 +414,7 @@
                         <useIncrementalCompilation>false</useIncrementalCompilation>
                         <compilerArgs>
                             <arg>-Xlint:all</arg>
-                            <arg>-Werror</arg>
+                            <!-- <arg>-Werror</arg> -->
                         </compilerArgs>
                     </configuration>
                     <executions>

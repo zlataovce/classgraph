@@ -49,4 +49,19 @@ class EncapsulationCircumventionTest {
             assertThat(scanResult.getAllClasses().getNames()).isNotEmpty();
         }
     }
+
+    /** Test Unsafe. */
+    @Test
+    void testUnsafe() {
+        ClassGraph.CIRCUMVENT_ENCAPSULATION = CircumventEncapsulationMethod.UNSAFE;
+        final ReflectionUtils reflectionUtils = new ReflectionUtils();
+        assertThat(
+                reflectionUtils.getFieldVal(true, reflectionUtils, "reflectionDriver").getClass().getSimpleName())
+                        .isEqualTo("UnsafeReflectionDriver");
+        try (ScanResult scanResult = new ClassGraph()
+                .acceptPackages(EncapsulationCircumventionTest.class.getPackage().getName()).enableAllInfo()
+                .scan()) {
+            assertThat(scanResult.getAllClasses().getNames()).isNotEmpty();
+        }
+    }
 }
