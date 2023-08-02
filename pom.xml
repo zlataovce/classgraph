@@ -3,7 +3,7 @@
 
     <groupId>io.github.classgraph</groupId>
     <artifactId>classgraph</artifactId>
-    <version>4.8.161-SNAPSHOT</version>
+    <version>4.8.162-SNAPSHOT</version>
     <name>ClassGraph</name>
 
     <description>The uber-fast, ultra-lightweight classpath and module scanner for JVM languages.</description>
@@ -31,7 +31,7 @@
         <connection>scm:git:git@github.com:classgraph/classgraph.git</connection>
         <developerConnection>scm:git:git@github.com:classgraph/classgraph.git</developerConnection>
         <url>https://github.com/classgraph/classgraph</url>
-      <tag>classgraph-4.8.158</tag>
+      <tag>classgraph-4.8.161</tag>
     </scm>
 
     <issueManagement>
@@ -41,11 +41,11 @@
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
@@ -164,7 +164,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -174,7 +174,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.11.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -199,7 +199,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -219,7 +219,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.0.1</version>
             </plugin>
 
             <!-- Override versions of the following plugins, inherited from the super-pom, with latest versions -->
@@ -236,7 +236,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.1.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -413,8 +413,9 @@
                         <testTarget>8</testTarget>
                         <useIncrementalCompilation>false</useIncrementalCompilation>
                         <compilerArgs>
-                            <arg>-Xlint:all</arg>
-                            <!-- <arg>-Werror</arg> -->
+                            <arg>-Xlint:all</arg><!-- Max lint -->
+                            <arg>-Xlint:-options</arg><!-- Remove warnings about JDK7 being deprecated sometime -->
+                            <!-- <arg>-Werror</arg> Stop on warnings -->
                         </compilerArgs>
                     </configuration>
                     <executions>
@@ -544,7 +545,7 @@
                     <extensions>true</extensions>
                     <configuration>
                         <serverId>ossrh</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                         <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         <stagingProgressTimeoutMinutes>10</stagingProgressTimeoutMinutes>
                     </configuration>
